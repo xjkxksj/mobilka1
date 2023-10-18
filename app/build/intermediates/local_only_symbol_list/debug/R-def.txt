@@ -1,0 +1,28 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id false_button
+id next_button
+id question_text_view
+id true_button
+layout activity_main
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string button_false
+string button_next
+string button_true
+string correct_answer
+string incorrect_answer
+string q_activity
+string q_find_resources
+string q_listener
+string q_resources
+string q_version
+style Base.Theme.MyApplication
+style Theme.MyApplication
+xml backup_rules
+xml data_extraction_rules
