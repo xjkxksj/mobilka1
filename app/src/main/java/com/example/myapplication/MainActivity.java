@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private Button falseButton;
     private Button nextButton;
     private TextView questionTextView;
+    private TextView correctCounter;
 
     private Question[] questions = new Question[] {
             new Question(R.string.q_activity, true),
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             new Question(R.string.q_find_resources, false)
     };
     private int currentIndex = 0;
-
+    private int counter = 0;
     public MainActivity() {
     }
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         falseButton = findViewById(R.id.false_button);
         nextButton = findViewById(R.id.next_button);
         questionTextView = findViewById(R.id.question_text_view);
+        correctCounter = findViewById(R.id.correctCounter);
 
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 currentIndex = (currentIndex + 1) % questions.length;
+                if(currentIndex == 4) correctCounter.setVisibility(View.VISIBLE);
+                else if(currentIndex == 0) {
+                    correctCounter.setVisibility(View.INVISIBLE);
+                    counter = 0;
+                }
                 setNextQuestion();
             }
         });
@@ -72,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
         int resultMessageId = 0;
         if (userAnswer == correctAnswer) {
             resultMessageId = R.string.correct_answer;
+            counter++;
+            correctCounter.setText(Integer.toString(counter));
+
         }
         else
             resultMessageId = R.string.incorrect_answer;
